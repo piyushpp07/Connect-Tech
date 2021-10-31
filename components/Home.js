@@ -19,11 +19,11 @@ const Home = ({ navigation, route }) => {
             <Text style={styles.t2}>Gender: {response.data.data.data.info.gender}</Text>
 
             <Text style={styles.t2}>Address: {response.data.data.data.address.house}</Text>
-            <Text style={styles.t2}>{response.data.data.data.address.street}</Text>
-            <Text style={styles.t2}>{response.data.data.data.address.ln}</Text>
+            {/* <Text style={styles.t2}>{response.data.data.data.address.street}</Text>
+            <Text style={styles.t2}>{response.data.data.data.address.ln}</Text> */}
             <Text style={styles.t2}>{response.data.data.data.address.loc}</Text>
-            <Text style={styles.t2}>{response.data.data.data.address.btc}</Text>
-            <Text style={styles.t2}>{response.data.data.data.address.subdist}</Text>
+            {/* <Text style={styles.t2}>{response.data.data.data.address.btc}</Text>
+            <Text style={styles.t2}>{response.data.data.data.address.subdist}</Text> */}
             <Text style={styles.t2}>{response.data.data.data.address.dist}</Text>
             <Text style={styles.t2}>{response.data.data.data.address.state}</Text>
             <Text style={styles.t2}>{response.data.data.data.address.country}</Text>

@@ -17,7 +17,10 @@ function Login({ navigation }) {
       else {
          axios.post('http://192.168.29.241:8000/api/user/otp/', {
             UID: UID
-         }).then((response) => { setB(true) })
+         }).then((response) => {
+            setB(true);
+            console.log(response)
+         })
       }
    }
    const OtpCheck = () => {
@@ -30,6 +33,7 @@ function Login({ navigation }) {
          navigation.navigate('Home', { response })
       })
    }
+
    return (
 
       <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bottom: 50 }}>

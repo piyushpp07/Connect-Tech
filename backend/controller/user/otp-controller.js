@@ -6,7 +6,7 @@ module.exports.otp = async function (req, res) {
     const { UID } = req.body;
     const txnid = uuid();
 
-   
+
     otpRequest(UID, txnid, function (result) {
         let OTP = result.status;
         console.log(OTP);

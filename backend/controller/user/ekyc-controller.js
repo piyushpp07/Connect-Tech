@@ -24,29 +24,44 @@ module.exports.ekyc = async function (req, res) {
             return res.status(401).send("Invalid OTP");
 
         if (name == "landlord") {
-            return res
-                .status(200)
-                .send()
+            return res.json({
+                status: 200,
+                data: {
+                    name: ekycData.data.name,
+                    address: ekycData.data.address
+                },
+                message: "Address Accessed!"
+            });
         }
 
         if (ekycStatus == 'y' || ekycStatus == 'Y') {
 
-            // UserData.findOne({uid: UID}, function(err, user){
-            //   if(err){console.log('error in finding user'); return;}
+            UserData.findOne({ uid: UID }, function (err, user) {
+                if (err) { console.log('error in finding user'); return; }
 
-            //   if(!user){
-            //       User.create({
-            //         uid: UID,
+                if (!user) {
+                    UserData.create({
+                        uid: UID,
+                        name: ekycData.data.info.name,
+                        phone: ekycData.data.info.phone,
+                        co: ekycData.data.address.co,
+                        country: ekycData.data.address.country,
+                        dist: ekycData.data.address.dist,
+                        lm: ekycData.data.address.lm,
+                        loc: ekycData.data.address.loc,
+                        pc: ekycData.data.address.pc,
+                        state: ekycData.data.address.state,
+                        vtc: ekycData.data.address.vtc,
+                        house: ekycData.data.info.house,
+                    },
+                        function (error) {
+                            if (error) { console.log('error in creating user', error); return; }
+                        })
 
-            //       }, 
-            //       function(error){
-            //         if(error){console.log('error in creating user', error); return;}
-            //       })
-
-            //   }  else {
-            //       console.log("user exists");
-            //   }
-            // });
+                } else {
+                    console.log("user exists");
+                }
+            });
 
             return res.json({
                 status: 200,
@@ -57,7 +72,6 @@ module.exports.ekyc = async function (req, res) {
 
         return res.status(404).send("Some error Occured!");
     });
-
 };
 
 function otpRequest(UID, name, txnid, otp, cb) {
