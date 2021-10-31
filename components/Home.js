@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
    hea: {
 
       fontWeight: 'bold',
-      fontSize: 25
+      fontSize: 25, top: 10
    },
    t1: {
       fontWeight: 'bold',

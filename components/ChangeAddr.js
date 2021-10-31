@@ -39,7 +39,7 @@ const ChangeAddr = ({ navigation }) => {
          UID: UID
       }).then((response) => {
          console.log(response);
-         Alert.alert("Updated Address", `updated House ${house}`)
+         Alert.alert("Updated Address", `updated House ${house}`);
       })
    }
    return (
@@ -83,6 +83,7 @@ const ChangeAddr = ({ navigation }) => {
                   onChangeText={house => setHouse(house)}
                   style={{ bottom: 2, width: 310 }}
                />
+               <Text style={{ fontWeight: 'bold' }}>Landlord Address</Text>
                <Text>{response.data.data.address.street}</Text>
                <Text>{response.data.data.address.ln}</Text>
                <Text>LOC : {response.data.data.address.loc}</Text>
